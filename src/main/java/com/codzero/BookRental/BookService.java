@@ -1,13 +1,22 @@
 package com.codzero.BookRental;
 
+import com.codzero.BookRental.exception.NotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
   private final List<Book> books = new ArrayList<>();
+
+  private final BookRepository bookRepository;
+
+  @Autowired
+  public BookService(BookRepository bookRepository) {
+    this.bookRepository = bookRepository;
+  }
 
   public Book createBook(Book book) {
     book.setId((long)(books.size() + 1));
@@ -39,5 +48,9 @@ public class BookService {
       }
     }
     return false;
+  }
+
+  public Book getBookById(Long id) {
+    return bookRepository.findById(id).orElseThrow(() -> new NotFoundException("도서를 찾을 수 없습니다."));
   }
 }
