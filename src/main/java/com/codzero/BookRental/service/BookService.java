@@ -1,5 +1,6 @@
-package com.codzero.BookRental;
+package com.codzero.BookRental.service;
 
+import com.codzero.BookRental.BookRequest;
 import com.codzero.BookRental.entity.Book;
 import com.codzero.BookRental.exception.NotFoundException;
 import com.codzero.BookRental.repository.BookRepository;

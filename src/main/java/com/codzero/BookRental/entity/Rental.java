@@ -26,8 +26,7 @@ public class Rental {
 
   public Rental() {}
 
-  public Rental(Long id, User user, Book book) {
-    this.id = id;
+  public Rental(User user, Book book) {
     this.user = user;
     this.book = book;
     this.rentedDate = LocalDateTime.now();
