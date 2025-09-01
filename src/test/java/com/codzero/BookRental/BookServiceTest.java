@@ -5,6 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
 import com.codzero.BookRental.exception.NotFoundException;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,9 +20,12 @@ class BookServiceTest {
 
   @Test
   void 책생성() {
-    Book book = new Book();
-    book.setTitle("테스트 책");
-    Book saved = bookService.createBook(book);
+    BookRequest bookRequest = new BookRequest();
+    String bookName = "테스트 책";
+    bookRequest.setTitle(bookName);
+    bookRequest.setAuthor("홍길동");
+    bookRequest.setPublishedDate(LocalDateTime.now());
+    Book saved = bookService.createBook(bookRequest);
 
     assertThat(saved.getId()).isNotNull();
     assertThat(saved.getTitle()).isEqualTo("테스트 책");
@@ -41,14 +45,14 @@ class BookServiceTest {
   }
 
   private void createBook(String title) {
-    Book book = new Book();
+    BookRequest book = new BookRequest();
     book.setTitle(title);
     bookService.createBook(book);
   }
 
   @Test
   void 책을삭제() {
-    Book book = new Book();
+    BookRequest book = new BookRequest();
     book.setTitle("삭제할 책");
     bookService.createBook(book);
 

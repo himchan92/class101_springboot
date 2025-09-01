@@ -1,5 +1,6 @@
 package com.codzero.BookRental;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +24,8 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<Book> creaetBook(@RequestBody Book book) {
-      return ResponseEntity.status(HttpStatus.CREATED).body(bookService.createBook(book));
+    public ResponseEntity<Book> creaetBook(@RequestBody @Valid BookRequest bookRequest) {
+      return ResponseEntity.status(HttpStatus.CREATED).body(bookService.createBook(bookRequest));
     }
 
     @PutMapping("/{id}")
