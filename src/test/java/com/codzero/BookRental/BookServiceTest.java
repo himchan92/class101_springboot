@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 
 import com.codzero.BookRental.entity.Book;
 import com.codzero.BookRental.exception.NotFoundException;
+import com.codzero.BookRental.repository.BookRepository;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

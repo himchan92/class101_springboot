@@ -1,4 +1,4 @@
-package com.codzero.BookRental;
+package com.codzero.BookRental.repository;
 
 import com.codzero.BookRental.entity.Book;
 import java.time.LocalDateTime;

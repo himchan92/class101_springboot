@@ -2,6 +2,7 @@ package com.codzero.BookRental;
 
 import com.codzero.BookRental.entity.Book;
 import com.codzero.BookRental.exception.NotFoundException;
+import com.codzero.BookRental.repository.BookRepository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
