@@ -1,4 +1,4 @@
-package com.codezero.helloworld;
+package com.codzero.BookRental;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

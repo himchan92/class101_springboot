@@ -1,9 +1,8 @@
-package com.codezero.helloworld;
+package com.codzero.BookRental;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service

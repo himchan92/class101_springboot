@@ -1,4 +1,4 @@
-package com.codezero.helloworld;
+package com.codzero.BookRental;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
