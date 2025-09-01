@@ -1,5 +1,6 @@
 package com.codezero.helloworld;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,44 +12,40 @@ import java.util.List;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private final List<Book> books = new ArrayList<>();
+
+    private final BookService bookService;
+
+    @Autowired
+    public BookController(BookService bookService) {
+      this.bookService = bookService;
+    }
 
     @GetMapping
     public List<Book> getBooks() {
-        return books;
+      return this.bookService.getBooks();
     }
 
     @PostMapping
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        book.setId((long)(books.size() + 1));
-        books.add(book);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(book);
+    public ResponseEntity<Book> creaetBook(@RequestBody Book book) {
+      return ResponseEntity.status(HttpStatus.CREATED).body(bookService.createBook(book));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book updateBook) {
-        for(Book book : books) {
-            if(book.getId().equals(id)) {
-                book.setTitle(updateBook.getTitle());
-                return ResponseEntity.ok(book);
-            }
-        }
-
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+      Book updatedBook = bookService.updateBook(id, updateBook);
+      if(updatedBook != null) {
+        return ResponseEntity.ok(updateBook);
+      }
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
-        for(Iterator<Book> iterator = books.iterator(); iterator.hasNext();) {
-            Book book = iterator.next();
-            if(book.getId().equals(id)) {
-                iterator.remove();
-                return ResponseEntity.noContent().build();
-            }
-        }
+  public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
+      boolean deleteResult = bookService.deleteBook(id);
+      if(deleteResult) {
+        return ResponseEntity.noContent().build();
+      }
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
