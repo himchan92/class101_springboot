@@ -1,5 +1,6 @@
 package com.codzero.BookRental;
 
+import com.codzero.BookRental.entity.Book;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

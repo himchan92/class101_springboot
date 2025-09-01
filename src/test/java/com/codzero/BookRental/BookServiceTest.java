@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
+import com.codzero.BookRental.entity.Book;
 import com.codzero.BookRental.exception.NotFoundException;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;

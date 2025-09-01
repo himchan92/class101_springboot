@@ -1,4 +1,4 @@
-package com.codzero.BookRental;
+package com.codzero.BookRental.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,5 +1,6 @@
 package com.codzero.BookRental;
 
+import com.codzero.BookRental.entity.Book;
 import com.codzero.BookRental.exception.NotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
